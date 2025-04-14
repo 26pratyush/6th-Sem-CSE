@@ -1,4 +1,4 @@
-//7. a) Demonstrate the working of wait and waitpid system calls with a program
+//7.a) Demonstrate the working of wait and waitpid system calls with a program
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/wait.h>
