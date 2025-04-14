@@ -7,16 +7,16 @@
 int main() {
     int file = open("test.txt", O_RDWR);
 
-    char buf[10];  				// buffer to read up to 100 characters
-    int n = read(file, buf, 5);  			// read up to 100 characters
+    char buf[10];  				                // buffer to read up to 100 characters
+    int n = read(file, buf, 5);  			    // read up to 100 characters
 
-    buf[n] = '\0';  				// null-terminate the string
+    buf[n] = '\0';  				        // null-terminate the string
 
-    lseek(file, 0, SEEK_END);  		// move file offset to end
+    lseek(file, 0, SEEK_END);  		        // move file offset to end
 
-    dup2(file, STDOUT_FILENO);  		// redirect stdout to file
+    dup2(file, STDOUT_FILENO);  		    // redirect stdout to file
 
-    printf("%s", buf);  			// this goes to the file, not the terminal
+    printf("%s", buf);  			        // this goes to the file, not the terminal
 
     close(file);
     return 0;
