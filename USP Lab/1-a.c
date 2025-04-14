@@ -4,7 +4,7 @@
 #include <unistd.h>
 
 int main() {
-    int file = open("test.txt", O_RDONLY);    	    // Open the file in read-only mode
+    int file = open("test.txt", O_RDONLY);    	        // Open the file in read-only mode
 
     off_t pos = lseek(file, 0, SEEK_END);          	// Move to end to get file size
     char c;
