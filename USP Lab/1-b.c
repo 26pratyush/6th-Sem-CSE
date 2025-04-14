@@ -19,7 +19,7 @@ int main() {
      else 
    {                                 				// Parent process
         wait(NULL);                          			// Wait for child to finish
-        read(file, buf, 5);                    			// Read next 7 bytes (shared offset)
+        read(file, buf, 5);                    			// Read next 5 bytes (shared offset)
         buf[5] = '\0';
         printf("Parent read: %s\n", buf);
     }
