@@ -7,7 +7,7 @@
 #include <sys/wait.h> 
 
 int main() {
-    int fd = open("test.txt", O_RDONLY);     	// Open file in read-only mode
+    int fd = open("test.txt", O_RDONLY);     	        // Open file in read-only mode
     char buf[21];                            			// Buffer for reading
 
     if (fork() == 0) 
