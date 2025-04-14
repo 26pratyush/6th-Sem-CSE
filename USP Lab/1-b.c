@@ -8,7 +8,7 @@
 
 int main() {
     int file = open("test.txt", O_RDONLY);     	                // Open file in read-only mode
-    char buf[21];                            			// Buffer for reading
+    char buf[20];                            			// Buffer for reading
 
     if (fork() == 0) 
    {                       					// Child process
@@ -19,8 +19,8 @@ int main() {
      else 
    {                                 				// Parent process
         wait(NULL);                          			// Wait for child to finish
-        read(file, buf, 7);                    			// Read next 7 bytes (shared offset)
-        buf[7] = '\0';
+        read(file, buf, 5);                    			// Read next 7 bytes (shared offset)
+        buf[5] = '\0';
         printf("Parent read: %s\n", buf);
     }
 
