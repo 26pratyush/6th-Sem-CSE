@@ -1,11 +1,13 @@
 //5.b) Write a program to differentiate between dup and dup2 functions
 
 #include <stdio.h>
-#include <unistd.h>                                                                                                                                         #include <fcntl.h>                                                                                                                                                                                                                                                                                                      int main() {                                                                                                                                                    
+#include <unistd.h>
+#include <fcntl.h>   
 
-int file = open("test.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);   
-                                                                                                                                                                                                                                                       // Using dup() - Duplicates the file descriptor (gets the smallest available file)
-    int dup_file = dup(file);
+int main() {   
+    int file = open("test.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);   
+                                                                                                                                                                                                                                                       
+    int dup_file = dup(file);        // Using dup() - Duplicates the file descriptor (gets the smallest available file)
 
     write(dup_file, "Written using dup()\n", 20); 
     close(dup_file);
