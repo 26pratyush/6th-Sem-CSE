@@ -7,8 +7,8 @@
 int main() {
     int file = open("test.txt", O_RDWR);
 
-    char buf[10];  				            // buffer to read up to 100 characters
-    int n = read(file, buf, 5);  			// read up to 100 characters
+    char buf[10];  				            // buffer to read up to 10 characters
+    int n = read(file, buf, 5);  			// read up to 5 characters
 
     buf[n] = '\0';  				        // null-terminate the string
 
