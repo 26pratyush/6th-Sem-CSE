@@ -7,19 +7,19 @@
 #include <sys/wait.h> 
 
 int main() {
-    int fd = open("test.txt", O_RDONLY);     	            // Open file in read-only mode
+    int file = open("test.txt", O_RDONLY);     	                // Open file in read-only mode
     char buf[21];                            			// Buffer for reading
 
     if (fork() == 0) 
    {                       					// Child process
-        read(fd, buf, 5);                    			// Read first 5 bytes
+        read(file, buf, 5);                    			// Read first 5 bytes
         buf[5] = '\0';
         printf("Child read: %s\n", buf);
     } 
      else 
    {                                 				// Parent process
         wait(NULL);                          			// Wait for child to finish
-        read(fd, buf, 7);                    			// Read next 7 bytes (shared offset)
+        read(file, buf, 7);                    			// Read next 7 bytes (shared offset)
         buf[7] = '\0';
         printf("Parent read: %s\n", buf);
     }
