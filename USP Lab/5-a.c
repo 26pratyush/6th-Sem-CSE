@@ -11,7 +11,7 @@ int main() {
     printf("Enter the filename: ");
     scanf("%s", filename);  // Read filename from user input
 
-    lstat(filename, &st);    //Use lstat not stat to idetify symbolic link!
+    lstat(filename, &st);    //Use lstat not stat to identify symbolic link!
 
     if (S_ISREG(st.st_mode))      printf("Regular file\n");
     else if (S_ISDIR(st.st_mode)) printf("Directory\n");
