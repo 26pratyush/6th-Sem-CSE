@@ -5,7 +5,7 @@
 #include <fcntl.h>   
 
 int main() {   
-    int file = open("test.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);   
+    int file = open("test.txt", O_WRONLY | O_TRUNC);    //Assuming blank file test.txt already created 
                                                                                                                                                                                                                                                        
     int dup_file = dup(file);        // Using dup() - Duplicates the file descriptor (gets the smallest available file)
 
