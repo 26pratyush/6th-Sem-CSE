@@ -3,19 +3,22 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>   
+#include<string.h>
 
 int main() {   
     int file = open("test.txt", O_WRONLY | O_TRUNC);    //Assuming blank file test.txt already created 
                                                                                                                                                                                                                                                        
-    int dup_file = dup(file);        // Using dup() - Duplicates the file descriptor (gets the smallest available file)
+    int dfile = dup(file);        // Using dup() - Duplicates the file descriptor (gets the smallest available file)
 
-    write(dup_file, "Written using dup()\n", 20); 
-    close(dup_file);
+    char text[]="written using dup";
+    write(dfile, text, strlen(text));
+    close(dfile);
 
-    int dup2_file = dup2(file, 3);  // Using dup2() - Duplicates the file desc and explicitly specifies the target (file 3)
+    int d2file = dup2(file, 3);  // Using dup2() - Duplicates the file desc and explicitly specifies the target (file 3)
 
-    write(dup2_file, "Written using dup2()\n", 20);  
-    close(dup2_file);
+    char text1[]="written using dup2";
+    write(d2file, text1, strlen(text1)); 
+    close(d2file);
 
     close(file);
 
