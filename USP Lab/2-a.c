@@ -4,9 +4,13 @@
 #include <sys/stat.h>
 
 int main() {
+    char filename[100];
     struct stat fileStat;
 
-    stat("test.txt", &fileStat)
+    printf("Enter the file name: ");
+    scanf("%s", filename);
+
+    stat(filename, &fileStat);
 
     printf("File Size      : %ld bytes\n", fileStat.st_size);
     printf("Number of Links: %ld\n", fileStat.st_nlink);
