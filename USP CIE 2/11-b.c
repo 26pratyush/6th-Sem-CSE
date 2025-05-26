@@ -1,3 +1,9 @@
+/*11.b) Write a program to perform the following operations:
+i) To create a child process.
+ii)The child process should execute a separate program (using exec() function) that calculates 
+the addition of two numbers by passing two integer values.
+iii) Parent process should wait for the child to complete.*/
+
 1.//main.c
 #include <stdio.h>
 #include <stdlib.h>
