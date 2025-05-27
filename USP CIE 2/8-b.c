@@ -24,7 +24,7 @@ int main() {
     return 0;
 }
 
-//child.c
+//p1.c
 #include <stdio.h>
 #include <unistd.h>
 
@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
 create example.txt with one line text!!
 
 //To run:
-cc -o child child.c
+cc -o p1 p1.c
 cc -o main main.c
 ./main
 
