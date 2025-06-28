@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 int main(){
         if (fork()==0)
         {
-                execl("./textinterpreter", "test", "arg1", "arg2", "arg3", (char *)0);
+                execl("./textinterpreter", "dummy", "arg1", "arg2", "arg3", (char *)0);
         }
         else
         {
