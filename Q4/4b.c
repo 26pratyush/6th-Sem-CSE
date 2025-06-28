@@ -6,30 +6,39 @@
 //interpreter file.
 
 1. /*************** echoall.c ***************/
-#include <stdio.h>
+#include<stdio.h>
 
-int main(int argc, char *argv[]) {
-    for (int i = 0; i < argc; i++)
-        printf("argv[%d] = %s\n", i, argv[i]);
-    return 0;
+int main(int argc, char *argv[])
+{
+        for(int i=0; i<argc; i++)
+        {
+                printf(" argv[%d] = %s\n", i, argv[i]);
+        }
+        return 0;
 }
+
 
 2. /*************** inter.c ***************/
-#include <unistd.h>
-#include <sys/wait.h>
+#include<sys/wait.h>
+#include<unistd.h>
 
-int main() {
-    if (fork() == 0) {
-        execl("./textinterpreter", "test", "myarg1", "myarg2", "myarg4", (char *)0);
-    } else {
-        wait(NULL);
-    }
-    return 0;
+int main(){
+        if (fork()==0)
+        {
+                execl("./textinterpreter", "test", "arg1", "arg2", "arg3", (char *)0);
+        }
+        else
+        {
+                wait(NULL);
+        }
+        return 0;
 }
 
-3. //vi textinterpreter (Shell SCript): 
+3. /*************** textinterpreter ***************/
+//vi textinterpreter (Shell Script): 
+    
 #!/bin/bash
-/home/prat/labtest1/echoall my2 "$@"    //Replace with your absolute path:  realpath echoall
+$(realpath ./echoall) my2 "$@"   
   
 
 /*Instructions to Build and Run: Save each block above into its own file
