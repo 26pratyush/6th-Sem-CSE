@@ -6,7 +6,8 @@
 int main() {
     int file = open("test.txt", O_RDONLY);    	        // Open the file in read-only mode
 
-    off_t pos = lseek(file, 0, SEEK_END);          	// Move to end to get file size
+    int pos = lseek(file, 0, SEEK_END);          	// Move to end to get file size
+    
     char c;
 
     while (pos-- > 0) {                          	// Loop from end of file to start
