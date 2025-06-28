@@ -25,6 +25,7 @@ int main()
                                 close(file_desc);
                         }
                 }
+                closedir(directory);
         }
         return 0;
 }
