@@ -43,6 +43,6 @@ int main(int argc, char *argv[], char *envp[]) {
 }
 
 //To run:
-cc -o main main.c
-cc -o echoall echoall.c
+gcc -o main main.c
+gcc -o echoall echoall.c
 ./main
