@@ -4,12 +4,14 @@
 #include <unistd.h>
 #include <sys/wait.h>
 
-int main() {
+int main() 
+{
     pid_t pid = fork();
     if (pid == 0) {
-        printf("Child (PID %d) exiting...\n", getpid());	// Child exits immediately
-        return 0;
-    } else {
+        printf("Child (PID %d) exiting...\n", getpid());	
+        return 0;                                            // Child exits before parent can reap
+    } 
+    else {
       
         // Parent sleeps to allow child to become zombie
         printf("Parent (PID %d) sleeping for 5 seconds...\n", getpid());
@@ -17,7 +19,7 @@ int main() {
         printf("Zombie process created.\n");
         sleep(5);
       
-        // Check ps -el | grep Z during this time to see zombie
+        // Check ps -el | grep Z in another terminal during this time to see zombie (Z)
         // Now reaping the zombie
 
         wait(NULL);
