@@ -24,7 +24,6 @@ int main(int argc, char *argv[])
         while((n=read(src,buf,50))>0)
                 write(dest, buf, n);
 
-        printf("Copied Successfully");
         close(src);
         close(dest);
         return 0;
