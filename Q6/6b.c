@@ -36,13 +36,14 @@ int main(int argc, char *argv[]) {
         return 0;
     }
 
-    lock.l_type = F_WRLCK;
+    lock.l_type = F_WRLCK;                //if not already locked, we set the lock
     fcntl(file, F_SETLK, &lock);
     printf("Region locked.\n");
 
-    char buf[101] = {0};
+    char buf[100];
     lseek(file, -50, SEEK_END);
     read(file, buf, 50);
+    buf[50]='\0';
     printf("Last 50 bytes of file are: %s\n", buf);
 
     printf("Press ENTER to unlock:\n");
