@@ -28,11 +28,7 @@ int main(int argc, char *argv[]) {
     getchar();
 
     // Check if region is already locked
-    if (fcntl(file, F_GETLK, &lock) == -1) {
-        perror("F_GETLK failed");
-        close(file);
-        return 1;
-    }
+    fcntl(file, F_GETLK, &lock);
 
     if (lock.l_type != F_UNLCK) {
         printf("Region is already locked by PID: %d\n", lock.l_pid);
@@ -40,14 +36,8 @@ int main(int argc, char *argv[]) {
         return 0;
     }
 
-        // Lock the region
     lock.l_type = F_WRLCK;
-    if (fcntl(file, F_SETLK, &lock) == -1) {
-        perror("Locking failed");
-        close(file);
-        return 1;
-    }
-
+    fcntl(file, F_SETLK, &lock);
     printf("Region locked.\n");
 
     char buf[101] = {0};
