@@ -6,26 +6,24 @@
 
 int my_sys(const char *cmd)
 {
-        if(!cmd){
-                return -1;
-        }
-
-        pid_t childpid=fork();
-
-        if(childpid==0){
-
-                execl("/bin/sh", "sh", "-c",cmd, (char *)NULL);
-                perror("execl failed");
-                exit(1);
-        }
-
-        int exit_status;
-
-        if(childpid>0 && waitpid(childpid, &exit_status, 0)!=-1 && WIFEXITED(exit_status))
-        {
-                return WEXITSTATUS(exit_status);
-        }
+    if (!cmd)
         return -1;
+
+    pid_t childpid = fork();
+
+    if (childpid == 0) {
+        execl("/bin/sh", "sh", "-c", cmd, (char *)NULL);
+        perror("execl failed");
+        exit(1);
+    }
+
+    int exit_status;
+    waitpid(childpid, &exit_status, 0);
+
+    if (WIFEXITED(exit_status))
+        return WEXITSTATUS(exit_status);
+
+    return -1;
 }
 
 int main(){
@@ -34,6 +32,3 @@ int main(){
         printf("Exit Status: %d\n", res);
         return 0;
 }
-
-//Removed all error handling and messages
-
