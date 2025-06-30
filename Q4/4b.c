@@ -5,7 +5,7 @@
 //iv. Create echoall.c file which prints the arguments received from both child process and
 //interpreter file.
 
-1. /*************** echoall.c ***************/
+1. /*************** main.c ***************/
 #include<stdio.h>
 
 int main(int argc, char *argv[])
@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 }
 
 
-2. /*************** inter.c ***************/
+2. /*************** child.c ***************/
 #include<sys/wait.h>
 #include<unistd.h>
 
@@ -38,18 +38,18 @@ int main(){
 //vi textinterpreter (Shell Script): 
     
 #!/bin/bash
-$(realpath ./echoall) my2 "$@"   
+$(realpath ./main) my2 "$@"   
   
 
 /*Instructions to Build and Run: Save each block above into its own file
-echoall.c , inter.c , textinterpreter
+main.c, child.c , textinterpreter
 
 Make the script executable:
 chmod +x textinterpreter
 
 Compile the C files:
-gcc -o echoall echoall.c
-gcc -o inter inter.c
+gcc -o main main.c
+gcc -o child child.c
 
 Run the program:
-./inter */
+./child */
