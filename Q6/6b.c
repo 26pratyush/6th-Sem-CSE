@@ -27,20 +27,20 @@ int main(int argc, char *argv[]) {
     printf("Press ENTER to check if region is locked and try locking it...\n");
     getchar();
 
-    // Check if region is already locked
+    // Get lock properties / info
     fcntl(file, F_GETLK, &lock);
 
-    if (lock.l_type != F_UNLCK) {
+    if (lock.l_type != F_UNLCK) {                                        //if file is not unlocked
         printf("Region is already locked by PID: %d\n", lock.l_pid);
         close(file);
-        return 0;
+        return 0;                                                        //program exits
     }
 
-    lock.l_type = F_WRLCK;                //if not already locked, we set the lock
+    lock.l_type = F_WRLCK;                //if file is unlocked, we set the lock
     fcntl(file, F_SETLK, &lock);
     printf("Region locked.\n");
 
-    char buf[100];
+    char buf[100];                        //read last 50 bytes
     lseek(file, -50, SEEK_END);
     read(file, buf, 50);
     buf[50]='\0';
@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
     printf("Press ENTER to unlock:\n");
     getchar();
 
-    lock.l_type = F_UNLCK;
+    lock.l_type = F_UNLCK;                //unlocking the file
     fcntl(file, F_SETLK, &lock);
 
     printf("Region Unlocked.\n");
