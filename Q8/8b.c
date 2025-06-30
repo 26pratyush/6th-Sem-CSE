@@ -16,7 +16,7 @@ int main()
         if(pid==0)
         {
                 printf("Child process created. PID: %d\n", getpid());
-                execl("./p1", "p1", "example.txt", (char *)NULL );
+                execl("./p1", "p1", "example.txt", (char *)NULL );        //sending file name here only
         }
         else
         {
@@ -33,7 +33,7 @@ int main()
 
 int main(int argc, char *argv[])
 {
-        if(access(argv[1], F_OK)==0 )
+        if(access(argv[1], F_OK)==0 )                                    //takes file name from main.c not command line
                 printf("File exists.\n");
             
         else
