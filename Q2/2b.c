@@ -32,3 +32,8 @@ int main(){
         printf("Exit Status: %d\n", res);
         return 0;
 }
+
+// The child process uses execl() to run a shell: /bin/sh and pass cmd to it via the -c option. "sh" is argv[0] and can be anything.
+// The parent process waits for the child to finish. The status of the child process is stored in exit_status.
+// WIFEXITED(status) checks if the child exited normally (not killed by signal).
+// WEXITSTATUS(status) extracts the actual exit code from the child process (e.g., 0 = success).
