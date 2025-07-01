@@ -6,24 +6,22 @@
 
 int main()
 {
-        char *src="src.txt";
-        char *dest="dest.txt";
-
         struct stat st;
         struct utimbuf newtime;
 
-        stat(src,&st);
+        stat("src.txt", &st);
 
         newtime.actime=st.st_atime;
         newtime.modtime=st.st_mtime;
 
-        utime(dest, &newtime);
+        utime("dest.txt", &newtime);
 
         printf("Timestamps copied from %s to %s", src, dest);
 
         return 0;
 }
 
+//Create src.txt before typing program & create dest.txt after, to ensure diff access and mod times.
 //To confirm access and modification times, enter on terminal before and after execution:
 //stat src.txt
 //stat dest.txt
