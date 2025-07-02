@@ -3,11 +3,11 @@
 #include<stdio.h>
 int main(){
 
-        if( link("test1.txt","hardlink.txt")==0 ){
+        if( link("test.txt","hardlink.txt")==0 ){
                 printf("Hard Link Created Sucessfully\n");
         }
         else{
-                perror("Error creating Soft Link\n");
+                perror("Error creating Hard Link\n");
         }
 
         if( symlink("test.txt","symlink.txt")==0 ){
